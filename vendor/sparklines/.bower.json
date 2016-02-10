@@ -1,0 +1,13 @@
+{
+  "name": "sparklines",
+  "homepage": "https://github.com/Alligator/sparklines",
+  "_release": "7a0ff0982d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "7a0ff0982d2eb98d161a99c8ada21e6404d267bd"
+  },
+  "_source": "git@github.com:Alligator/sparklines.git",
+  "_target": "master",
+  "_originalSource": "git@github.com:Alligator/sparklines.git"
+}

@@ -1,0 +1,422 @@
+/*
+ * Global */
+
+html {
+    box-sizing: border-box
+}
+
+*, *:before, *:after {
+    box-sizing: inherit
+}
+
+body {
+    width: auto;
+
+    &.x1 {
+        font-size: 15px;
+    }
+    &.x3 {
+        font-size: 17px;
+    }
+    &.x4 {
+        font-size: 18px;
+    }
+    &.x5 {
+        font-size: 19px;
+    }
+}
+
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their */
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles. */
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas. */
+textarea {
+    resize: vertical;
+}
+
+
+/*
+ * Header */
+
+header {
+    background: #222;
+    border-bottom: 0.25em solid @gray;
+    border-top: 0.2em solid rgba(0,0,0,0.9);
+    color: @white;
+    height: 3.5em;
+    position: fixed;
+    width: 100%;
+    z-index: @zindex-header;
+
+    body.x4 & {
+        height: 3.4em;
+    }
+    body.x5 & {
+        height: 3.3em;
+    }
+
+    /*
+     * Branding */
+     .logo {
+        background: url( '../images/brand/logo-app@2x.png' ) 0 0 no-repeat;
+        background-size: 1.143em 1.607em;
+        height: 1.607em;
+        line-height: 1.5em;
+        margin: -0.107em 0 0 12px;
+        font-family: @font-family-serif;
+        font-size: 1.75em;
+        font-weight: 300;
+        width: 6.75em;
+        padding: 0.179em 0 0 1.428em;
+
+        .logo-link {
+            color: @white;
+            height: 1.929em;
+        }
+    }
+
+    /*
+     * Each application is color branded ;) */
+    .titan & { border-bottom-color: @blue; }
+    .eagle & { border-bottom-color: @teal; }
+    .falcon & { border-bottom-color: @blue; }
+}
+
+
+/*
+ * Main window */
+
+main {
+    /*
+     * Default container is the fluid width container */
+    &.container-fluid {
+        padding-right: 20px;
+        padding-left: 20px;
+
+        /*
+         * If we have a header and/or left/right nav, push this */
+        .with-header & {
+            padding-top: 3.5em;
+        }
+        .with-left & {
+            margin-left: 12.5em;
+            @media (max-width: @screen-sm) {
+                margin-left: 56px !important;
+            }
+        }
+        .with-left.x1 & {
+            margin-left: 13.5em;
+        }
+        .with-drawer & {
+            margin-right: 30%;
+            @media (max-width: @screen-sm) {
+                margin-right: 44px;
+            }
+        }
+        .with-collapsed-drawer & {
+            margin-right: 44px;
+        }
+        .with-actions & {
+            padding-top: 7em;
+        }
+    }
+}
+
+
+/*
+ * Sections */
+
+section {
+    /*
+     * Content panel */
+    &.page {
+        position: relative;
+    }
+
+    /*
+     * Special (verbose) styles for the help button */
+    &.help {
+        border-right: 1px solid @medium-gray;
+        bottom: 0;
+        height: 50px;
+        left: 0;
+        text-align: center;
+        position: fixed;
+        width: 12.5em;
+        z-index: @zindex-navbar;
+
+        > .btn {
+            font-size: 1em;
+            padding: 0.1em 12px 0;
+
+            > .fa {
+                font-size: 13px;
+                padding-right: 7px;
+                top: 0;
+            }
+        }
+
+        &.off {
+            .btn,
+            .btn.no-hover:hover {
+                border-bottom-color: @line-gray;
+                color: @gray !important;
+            }
+            .fa {
+                color: @gray;
+            }
+        }
+
+        &.on {
+            .fa {
+                color: @soft-green;
+            }
+        }
+
+        body.x1 & {
+            width: 13.5em;
+        }
+
+        @media (max-width: @screen-sm) {
+            width: 56px;
+
+            > .btn {
+                display: none;
+            }
+        }
+    }
+
+    /*
+     * Drawer styles */
+    &.drawer {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 70%;
+        width: 30%;
+        background: #eee;
+        z-index: @zindex-dropdown;
+        display: none;
+
+        /*
+         * Components within drawer */
+        h3 {
+            margin: 0px;
+            padding: 0px 15px;
+            height: 50px;
+            line-height: 50px;
+            background: #ddd;
+
+            .buttons {
+                position: absolute;
+                top: 0px;
+                right: 8px;
+                line-height: 46px;
+
+                .with-header & {
+                    position: fixed;
+                    top: 2.8em;
+                    right: 7px;
+
+                    body.x4 & {
+                        top: 3.4em;
+                    }
+                    body.x5 & {
+                        top: 3.3em;
+                    }
+                }
+
+                a {
+                    padding: 0 9px;
+                    line-height: 32px;
+
+                    .fa {
+                        top: 1px;
+                    }
+                }
+                .open-btn {
+                    display: none;
+                }
+                .close-btn {
+                    display: inline-block;
+                }
+            }
+        }
+        .drawer-container {
+            position: absolute;
+            left: 15px;
+            right: 5px;
+            bottom: 10px;
+            top: 60px;
+
+            .drawer-scroller {
+                overflow: hidden;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: 0;
+
+                .drawer-content {
+                    padding-right: 10px;
+                }
+            }
+        }
+
+        .with-header & {
+            top: 3.25em;
+        }
+        .with-header.x3 & {
+            top: 3.3em;
+        }
+        .with-header.x4 & {
+            top: 3.15em;
+        }
+        .with-header.x5 & {
+            top: 3.1em;
+        }
+        .with-left & {
+            .eagle& {
+                border-top: 0.25em solid @dark-teal;
+            }
+            .titan& {
+                border-top: 0.25em solid @dark-blue;
+            }
+            .falcon& {
+                border-top: 0.25em solid @dark-red;
+            }
+        }
+        .with-drawer & {
+            display: block;
+        }
+        .with-collapsed-drawer & {
+            margin-left: -44px;
+            left: 100%;
+
+            .drawer-container {
+                display: none;
+            }
+            h3 {
+                span {
+                    display: none;
+                }
+                a {
+                    display: none !important;
+                }
+                .open-btn {
+                    display: inline-block !important;
+                }
+            }
+        }
+        .with-actions & {
+            border-left: 1px solid @line-gray;
+        }
+    }
+
+    /*
+     * Actions menu */
+    &.actions {
+        position: fixed;
+        top: 3.5em;
+        left: 12.5em;
+        height: 3.5em;
+        right: 0;
+        padding: 0.625em 1em;
+        background: @five-lt-gray;
+        border-bottom: 1px solid @line-gray;
+        z-index: @zindex-actions;
+
+        .btn {
+            font-size: 1em;
+            padding: 0 1em;
+            height: 2.25em;
+            line-height: 2.15em;
+
+            &:active {
+                margin-bottom: 0px;
+                height: 2.15em;
+            }
+        }
+
+        .with-drawer & {
+            right: 30%;
+        }
+        .with-collapsed-drawer & {
+            right: 44px;
+        }
+
+        body.x1 & {
+            left: 13.5em;
+        }
+        body.x4 & {
+            top: 3.4em;
+        }
+        body.x5 & {
+            top: 3.3em;
+        }
+
+        @media (max-width: @screen-sm) {
+            left: 56px !important;
+        }
+    }
+}
+
+
+/*
+ * Footer */
+
+footer {
+    border-top: 3px solid @line-gray-lt;
+    font-size: 0.8125em;
+    line-height: 1.8em;
+
+    .with-left & {
+        right: 0;
+        left: 15.3846em;
+        border-top: 1px solid @line-gray-lt;
+        color: @gray;
+        margin: 50px 20px 0 20px;
+        padding: 15px 0;
+        position: absolute;
+    }
+    .with-left.x1 & {
+        left: 16.6153em;
+    }
+    .with-drawer & {
+        right: 30%;
+        margin: 50px 20px 0 20px;
+        position: absolute;
+    }
+    .with-collapsed-drawer & {
+        right: 44px !important;
+    }
+
+    @media (max-width: @screen-sm) {
+        margin-left: 76px !important;
+        left: 0 !important;
+    }
+}

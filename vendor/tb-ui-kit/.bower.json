@@ -1,0 +1,28 @@
+{
+  "name": "tb-ui-kit",
+  "private": true,
+  "version": "0.0.75",
+  "main": "index.html",
+  "ignore": [
+    "LICENSE",
+    "node_modules",
+    "vendor"
+  ],
+  "dependencies": {
+    "bootstrap": "*",
+    "fontawesome": "*",
+    "underscore": "*",
+    "iCheck": "*",
+    "notifyjs": "*"
+  },
+  "homepage": "https://github.com/TeachBoost/ui-kit",
+  "_release": "0.0.75",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.75",
+    "commit": "9de422c9c33ff48c1b514925dead47cfc49dc410"
+  },
+  "_source": "git@github.com:TeachBoost/ui-kit.git",
+  "_target": "*",
+  "_originalSource": "git@github.com:TeachBoost/ui-kit.git"
+}

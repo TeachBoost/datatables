@@ -1,0 +1,25 @@
+<% if( _.has( _o.options.header, 'title' ) ) { %>
+     <h2> <%= _o.options.header.title %> </h2>
+<% } %>
+<table class="table<%= ( _o.options.tree ) ? ' tree' : '' %>">
+    <thead>
+        <% _.each( _.sortBy( _o.columns, 'position' ), function ( column ) { %>
+            <th class="" data-type="<%= column.type %>"><%= column.label %></th>
+        <% }); %>
+    </thead>
+    <tbody>
+        <% _.each( _o.data, function ( row ) { %>
+        <tr>
+            <% _.each( row, function ( cell, id ) {
+            console.log( 'cell', cell );
+                var type = _.where( _o.columns, { id: parseInt( id, 10 ) } )[0].type;
+                console.log( 'type', type );
+            %>
+
+            <%= App.Templates[ './src/html/views/cells/' + type + '.html' ]( { type: type, cell: cell } ) %>
+
+            <% }); %>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

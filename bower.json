@@ -1,0 +1,40 @@
+{
+  "name": "datatables",
+  "description": "HTML tables for a variety of data types and display options",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taliator/datatables"
+  },
+  "moduleType": [],
+  "keywords": [
+    "data",
+    "tables"
+  ],
+  "authors": [
+    "Talia Imbrescia <talia.imbrescia@gmail.com> (http://www.teachboost.com)"
+  ],
+  "main": [
+    "js/datatables.js",
+    "sass/index.scss"
+  ],
+  "dependencies": {
+    "tb-ui-kit": "git@github.com:TeachBoost/ui-kit.git",
+    "sparklines": "git@github.com:Alligator/sparklines.git#master",
+    "treeify": "git@github.com:supwisdom/bootstrap-treefy.git#master",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.0",
+    "iCheck": "^1.0.2",
+    "notifyjs": "^0.4.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "private": true
+}

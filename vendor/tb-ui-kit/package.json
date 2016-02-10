@@ -1,0 +1,20 @@
+{
+  "name": "ui-kit",
+  "description": "TeachBoost UI Kit",
+  "contributors": [
+    "Mike Gioia <mike@teachboost.com>",
+    "Andrew Gioia <andrew@teachboost.com>"
+  ],
+  "devDependencies": {
+    "less": "*",
+    "gulp": "*",
+    "gulp-less": "*",
+    "gulp-exec": "*",
+    "gulp-concat": "*",
+    "gulp-rename": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TeachBoost/ui-kit.git"
+  }
+}

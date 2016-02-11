@@ -50,6 +50,7 @@
             $expander.remove();
         }
         var expanderTemplate = treeFy.options.expanderTemplate;
+        console.log( 'expanderTemplate: ', expanderTemplate );
         $(expanderTemplate).prependTo(element).click(function(event) {
             //self.toggle($(this).closest('tr'));
             self.toggle();
@@ -73,6 +74,7 @@
     }
 
     Node.prototype.toggle = function() {
+        console.log( 'FUNCTION toggle RUN ============================= ' );
         if (this.row.hasClass('treetable-expanded')) {
             if (!this.isLeaf() && !this.row.hasClass('treetable-collapsed')) {
                 this.row.removeClass('treetable-expanded');
@@ -141,6 +143,7 @@
     TreeFy.VERSION = '0.0.1'
 
     TreeFy.prototype.getAllNodes = function() {
+        console.log( 'FUNCTION getAllNodes RUN ============================= ' );
         var self = this;
         var result = $.grep(self.$table.find('tr'), function(trElement) {
             var nodeData = $(trElement).attr('data-node');
@@ -151,6 +154,7 @@
         var allNodes = [];
         $.each($allNodes, function() {
             var node = new Node($(this));
+            console.log( 'node: ', node );
             node.addChildren(self.$table);
             allNodes.push(node);
         });
@@ -158,6 +162,7 @@
     }
 
     TreeFy.prototype.initTree = function(allNodes) {
+        console.log( 'FUNCTION initTree RUN ============================= ' );
         var self = this;
         var rootNodes = [];
         $.each(allNodes, function() {
@@ -174,6 +179,7 @@
     }
 
     TreeFy.prototype.initNode = function(nodes) {
+        console.log( 'FUNCTION initNode RUN ============================= ' );
         var self = this;
         $.each(nodes, function() {
             var rootNode = this.row;

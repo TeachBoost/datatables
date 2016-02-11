@@ -1,3 +1,8 @@
-<td class="_o.className">
-<% console.log( 'insight-links cell', _o ); %>
+<td class="<%= _o.type %>">
+    <a title="View insights" href="<%= _o.cell[ 0 ] %>">
+        <i class="fa fa-lightbulb-o"></i>
+    </a>
+    <a title="View timeline" href="<%= _o.cell[ 1 ] %>">
+            <i class="fa fa-bar-chart"></i>
+        </a>
 </td>

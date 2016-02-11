@@ -9,11 +9,19 @@
     </thead>
     <tbody>
         <% _.each( _o.data, function ( row ) { %>
+        <% if ( _o.options.tree ) { console.log( 'rowid', row[ 1 ].id.replace( '-', '__' ).replace( '.', '_' ) ); %>
+        <tr
+            data-node="treetable-<%= row[ 1 ].id.replace( '-', '__' ).replace( '.', '_' ) %>"
+            <%= ! _.isNull( row[ 1 ].parent )
+                ? ' data-pnode="treetable-parent-' + row[ 1 ].parent.replace( '-', '__' ).replace( '.', '_' ) + '"'
+                : ''
+            %>
+        >
+        <% } else { %>
         <tr>
+        <% } %>
             <% _.each( row, function ( cell, id ) {
-            console.log( 'cell', cell );
                 var type = _.where( _o.columns, { id: parseInt( id, 10 ) } )[0].type;
-                console.log( 'type', type );
             %>
 
             <%= App.Templates[ './src/html/views/cells/' + type + '.html' ]( { type: type, cell: cell } ) %>

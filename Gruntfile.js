@@ -12,7 +12,7 @@ module.exports = function ( grunt ) {
         watch: {
             sass: {
                 files: './src/sass/**/*.sass',
-                tasks: [ 'sass:main', 'concat:css' ]
+                tasks: [ 'sass:main' ]
             },
             jsapp: {
                 files: [ './src/js/**/*.js' ],
@@ -62,7 +62,7 @@ module.exports = function ( grunt ) {
                     './vendor/bootstrap/dist/js/bootstrap.js',
                     './vendor/iCheck/icheck.js',
                     './vendor/notifyjs/dist/notify.js',
-                    './vendor/sparklines/sparklines.js',
+                    // './vendor/sparklines/sparklines.js',
                     './vendor/treeify/dist/bootstrap-treefy.js',
                     './vendor/underscore/underscore.js',
                     './vendor/moment/moment.js'
@@ -75,6 +75,7 @@ module.exports = function ( grunt ) {
                     separator: ';\n'
                 },
                 src: [
+                    './src/js/sparklines.js',
                     './src/js/index.js'
                     // System libraries
                     // Application files

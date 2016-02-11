@@ -23,7 +23,6 @@
         console.log( 'bar' );
     };
 
-
 })( jQuery );
 
 
@@ -39,3 +38,9 @@ $body.find( 'table.one' ).dataTable( widgetData );
 $table2.addClass( 'two' );
 $body.append( $table2 );
 $body.find( 'table.two' ).dataTable();
+sparklines( '.sparkline' );
+$body.find( 'table.tree' ).treeFy({
+    expanderExpandedClass: 'fa fa-minus',
+    expanderCollapsedClass: 'fa fa-plus',
+    initStatusClass: 'treetable-collapsed'
+});

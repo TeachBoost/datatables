@@ -62,7 +62,7 @@ module.exports = function ( grunt ) {
                     './vendor/bootstrap/dist/js/bootstrap.js',
                     './vendor/iCheck/icheck.js',
                     './vendor/notifyjs/dist/notify.js',
-                    // './vendor/sparklines/sparklines.js',
+                    './vendor/sparklines/sparklines.js',
                     './vendor/treeify/dist/bootstrap-treefy.js',
                     './vendor/underscore/underscore.js',
                     './vendor/moment/moment.js'

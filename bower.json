@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "tb-ui-kit": "git@github.com:TeachBoost/ui-kit.git",
-    "sparklines": "git@github.com:Alligator/sparklines.git#master",
+    "sparklines": "git@github.com:taliator/sparklines.git#master",
     "treeify": "git@github.com:supwisdom/bootstrap-treefy.git#master",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.0",

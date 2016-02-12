@@ -95,6 +95,46 @@ var widgetData = {
                 '/insights/competency/380-1.1/0/10/0',
                 'insights/group/comptimeline/10/380-1.1/0'
             ]
+        },
+        {
+            1: {
+                label: "2. The Classroom Environment",
+                id: "380-2",
+                parent: null,
+                code: "2"
+            },
+            2: 0.5,
+            3: {
+                score: 4,
+                label: "Highly Effective"
+            },
+            4: [
+                3, 4, 3, 4, 4, 2, 4, 4
+            ],
+            5: [
+                '/insights/competency/380-2/0/10/0',
+                'insights/group/comptimeline/10/380-2/0'
+            ]
+        },
+        {
+            1: {
+                label: "2a. Creating an Environment of Respect and Rapport",
+                id: "380-2.1",
+                parent: "380-2",
+                code: "2a"
+            },
+            2: 0.18,
+            3: {
+                score: 2,
+                label: "Developing"
+            },
+            4: [
+                1, 2, 4, 2, 1, 3
+            ],
+            5: [
+                '/insights/competency/380-2.1/0/10/0',
+                'insights/group/comptimeline/10/380-2.1/0'
+            ]
         }
     ]
 };

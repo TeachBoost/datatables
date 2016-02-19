@@ -1,8 +1,23 @@
 .sparkline svg
     stroke: mediumseagreen
+    position: relative
     // stroke-width: 2%
 .sparkline-filled svg
     fill: rgba( 60,179,113,0.25 )
+
+td.sparkline
+    position: relative
+    z-index: 1
+    span.sparkline
+        padding: inherit
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        z-index: 0
+        svg
+            stroke: lightgray
 
 .score-2of2,
 .score-3of3,
@@ -43,3 +58,4 @@
     width: 16px
     height: 16px
     cursor: pointer
+

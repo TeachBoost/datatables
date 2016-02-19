@@ -1,30 +1,71 @@
-<% if( _.has( _o.options.header, 'title' ) ) { %>
-     <h2> <%= _o.options.header.title %> </h2>
+<% if( _.has( _o.data.options.header, 'title' ) ) { %>
+     <h2>
+        <%= _o.data.options.header.title.replace( '\{\{framework\}\}', _o.frameworks[ 0 ].name ) %>
+        <% if( _.has( _o.data.options.header, 'options' )  && _.indexOf( _o.data.options.header.options, 'toggle-framework' ) > -1 ) { %>
+            <select>
+                <option>Change Framework</option>
+                <% _.each( _o.frameworks, function ( framework ) { %>
+                    <option data-frameworkid="<%= framework.id %>"><%= framework.name %></option>
+                <%  });  %>
+            </select>
+        <% } %>
+     </h2>
 <% } %>
-<table class="table<%= ( _o.options.tree ) ? ' tree' : '' %>">
+<table class="table<%= ( _o.data.options.tree ) ? ' tree' : '' %><%= ( _o.data.options.columnTree ) ? ' column-tree' : '' %>">
     <thead>
-        <% _.each( _.sortBy( _o.columns, 'position' ), function ( column ) { %>
-            <th class="" data-type="<%= column.type %>"><%= column.label %></th>
-        <% }); %>
+        <tr>
+            <% _.each( _.sortBy( _o.data.columns, 'position' ), function ( column ) { %>
+                <th class="" data-type="<%= column.type %>"<%= ( _.has( column, "columns" ) ? 'coltreetable-' + column.id + ' colspan="' + ( parseInt( column.columns.length, 10 ) + 1 ) + '"' : '' ) %>><%= column.label %></th>
+            <% }); %>
+        </tr>
+        <% if( _o.data.options.columnTree ) {
+            for( var i = 0; i < _o.data.options.colLevels - 1; i++ ) { %>
+        <tr>
+                <% _.each( _.sortBy( _o.data.columns, 'position' ), function ( column ) {
+                    if( _.has( column, 'columns' ) ) { %>
+                    <th data-node="coltreetable-<%= column.id %>" data-pnode="coltreetable-<%= column.id %>">ParentCol</th>
+                    <% _.each( column.columns, function ( childColumn, childId ) { %>
+                        <% if ( _.has( childColumn, "columns" ) ) { %>
+                        <th class=""
+                            data-type="<%= childColumn.type %>"
+                            data-node="coltreetable-<%= column.id %>"
+                            data-pnode="coltreetable-<%= column.id %>">
+                            <%= childColumn.label %>
+                        </th>
+
+                        <% } %>
+                    <th class="" data-type="<%= childColumn.type %>"<%= ( _.has( childColumn, "columns" ) ? ' colspan="' + ( parseInt( childColumn.columns.length, 10 ) + 1 ) + '"' : '' ) %>><%= childColumn.label %></th>
+                    <% }); } else { %>
+                    <th></th>
+                    <% } %>
+                <% }); %>
+        </tr>
+    <% }} %>
     </thead>
     <tbody>
-        <% _.each( _o.data, function ( row ) { %>
-        <% if ( _o.options.tree ) { console.log( 'rowid', row[ 1 ].id.replace( '-', '__' ).replace( '.', '_' ) ); %>
-        <tr
-            data-node="treetable-<%= row[ 1 ].id.replace( '-', '__' ).replace( '.', '_' ) %>"
-            <%= ! _.isNull( row[ 1 ].parent )
-                ? ' data-pnode="treetable-parent-' + row[ 1 ].parent.replace( '-', '__' ).replace( '.', '_' ) + '"'
-                : ''
-            %>
-        >
-        <% } else { %>
-        <tr>
-        <% } %>
+        <% _.each( _o.data.data, function ( row ) { console.log( 'row', row ); %>
+            <% if ( _o.data.options.tree ) { %>
+            <tr
+                data-node="treetable-<%= row[ 1 ].id.replace( '-', '__' ).replace( '.', '_' ) %>"
+                <%= ! _.isNull( row[ 1 ].parent )
+                    ? ' data-pnode="treetable-parent-' + row[ 1 ].parent.replace( '-', '__' ).replace( '.', '_' ) + '"'
+                    : ''
+                %>
+            >
+            <% } else { %>
+            <tr>
+            <% } %>
             <% _.each( row, function ( cell, id ) {
-                var type = _.where( _o.columns, { id: parseInt( id, 10 ) } )[0].type;
+                var type = _.where( _o.data.columns, { id: parseInt( id, 10 ) } )[0].type;
+
             %>
 
-            <%= App.Templates[ './src/html/views/cells/' + type + '.html' ]( { type: type, cell: cell } ) %>
+                <%= App.Templates[ './src/html/views/cells/' + type + '.html' ]( { type: type, cell: cell } ) %>
+
+                <% if( _.has( cell, 'children' ) ) { _.each( cell.children, function ( childCell, childId ) { %>
+                    <%= App.Templates[ './src/html/views/cells/' + type + '.html' ]( { type: type, cell: childCell, pnode: id.replace( '.', '_' ), node: childId.replace( '.', '_' ) } ) %>
+                <% }); } %>
+
 
             <% }); %>
         </tr>

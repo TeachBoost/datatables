@@ -64,6 +64,7 @@ module.exports = function ( grunt ) {
                     './vendor/notifyjs/dist/notify.js',
                     './vendor/sparklines/sparklines.js',
                     './vendor/treeify/dist/bootstrap-treefy.js',
+                    './vendor/fixed-table-rows-cols/js/fixed_table_rc.js',
                     './vendor/underscore/underscore.js',
                     './vendor/moment/moment.js'
                 ],
@@ -132,6 +133,11 @@ module.exports = function ( grunt ) {
                     expand: true,
                     flatten: true,
                     src: './src/js/widget-data.js',
+                    dest: './dist/js'
+                },  {
+                    expand: true,
+                    flatten: true,
+                    src: './src/js/framework-data.js',
                     dest: './dist/js'
                 }]
             }

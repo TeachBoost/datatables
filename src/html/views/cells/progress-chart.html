@@ -1,2 +1,5 @@
-<td class="<%= _o.type %> sparkline" data-values="<%= _o.cell.join( ',' ) %>">
+<td class="<%= _o.type %> sparkline" data-values="<%= _.has( _o.cell, 'data' ) ? _o.cell.data.join( ',' ) : _o.cell.join( ',' ) %>" data-scale="1,4">
+<% if ( _.has( _o.cell, 'reference' ) ) { %>
+    <span class="sparkline sparkline-filled" data-values="<%= _o.cell.reference.join( ',' ) %>" data-scale="1,4" data-dashed="true"></span>
+<% } %>
 </td>

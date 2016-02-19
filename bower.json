@@ -21,6 +21,7 @@
     "tb-ui-kit": "git@github.com:TeachBoost/ui-kit.git",
     "sparklines": "git@github.com:taliator/sparklines.git#master",
     "treeify": "git@github.com:supwisdom/bootstrap-treefy.git#master",
+    "fixed-table-rows-cols": "git@github.com:meetselva/fixed-table-rows-cols.git#master",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.0",
     "iCheck": "^1.0.2",
